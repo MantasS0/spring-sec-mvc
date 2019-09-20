@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new user</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>Create new User</h2>
+    <form method="POST" th:action="@{/admin/create-user}" th:object="${user}">
+        <div class="form-group row" th:if="!${error == null}"><span th:text="${error}"></span></div>
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="name" th:field="*{name}" placeholder="Name">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="text" id="username" th:field="*{userName}" placeholder="Username">
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{userName}"></span>
+            </div> </div>
+
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+            <input class="form-control" type="password" id="password" th:field="*{password}" placeholder="Password">
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{userName}"></span>
+            </div></div>
+
+        <input type="submit" class="btn btn-primary mb-2" value="Create">
+    </form>
+</div>
+</body>
+</html>
